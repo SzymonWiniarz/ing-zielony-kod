@@ -1,0 +1,46 @@
+[
+  [
+    {
+      "numberOfPlayers": 4,
+      "points": 99
+    },
+    {
+      "numberOfPlayers": 1,
+      "points": 83
+    },
+    {
+      "numberOfPlayers": 2,
+      "points": 61
+    }
+  ],
+  [
+    {
+      "numberOfPlayers": 9,
+      "points": 99
+    }
+  ],
+  [
+    {
+      "numberOfPlayers": 10,
+      "points": 83
+    }
+  ],
+  [
+    {
+      "numberOfPlayers": 10,
+      "points": 82
+    }
+  ],
+  [
+    {
+      "numberOfPlayers": 6,
+      "points": 42
+    }
+  ],
+  [
+    {
+      "numberOfPlayers": 10,
+      "points": 39
+    }
+  ]
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "region": 4,
+    "requestType": "STANDARD",
+    "atmId": 1
+  },
+  {
+    "region": 1,
+    "requestType": "PRIORITY",
+    "atmId": 1
+  },
+  {
+    "region": 3,
+    "requestType": "STANDARD",
+    "atmId": 1
+  },
+  {
+    "region": 1,
+    "requestType": "STANDARD",
+    "atmId": 1
+  },
+  {
+    "region": 2,
+    "requestType": "STANDARD",
+    "atmId": 1
+  }
+]

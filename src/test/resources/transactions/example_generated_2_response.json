@@ -1,0 +1,32 @@
+[
+  {
+    "account": "06105023389842834748547303",
+    "debitCount": 1,
+    "creditCount": 2,
+    "balance": 213.27
+  },
+  {
+    "account": "31074318698137062235845814",
+    "debitCount": 2,
+    "creditCount": 3,
+    "balance": -278.64
+  },
+  {
+    "account": "32309111922661937852684864",
+    "debitCount": 1,
+    "creditCount": 1,
+    "balance": 397.28
+  },
+  {
+    "account": "66105036543749403346524547",
+    "debitCount": 1,
+    "creditCount": 0,
+    "balance": -195.33
+  },
+  {
+    "account": "81735023370242827768547303",
+    "debitCount": 2,
+    "creditCount": 1,
+    "balance": -136.58
+  }
+]

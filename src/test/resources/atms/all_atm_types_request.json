@@ -1,0 +1,42 @@
+[
+  {
+    "region": 1,
+    "requestType": "STANDARD",
+    "atmId": 1
+  },
+  {
+    "region": 2,
+    "requestType": "STANDARD",
+    "atmId": 2
+  },
+  {
+    "region": 1,
+    "requestType": "PRIORITY",
+    "atmId": 2
+  },
+  {
+    "region": 2,
+    "requestType": "FAILURE_RESTART",
+    "atmId": 2
+  },
+  {
+    "region": 1,
+    "requestType": "SIGNAL_LOW",
+    "atmId": 3
+  },
+  {
+    "region": 2,
+    "requestType": "PRIORITY",
+    "atmId": 6
+  },
+  {
+    "region": 1,
+    "requestType": "FAILURE_RESTART",
+    "atmId": 4
+  },
+  {
+    "region": 2,
+    "requestType": "SIGNAL_LOW",
+    "atmId": 4
+  }
+]

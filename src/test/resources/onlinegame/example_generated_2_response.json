@@ -1,0 +1,64 @@
+[
+  [
+    {
+      "numberOfPlayers": 9,
+      "points": 87
+    },
+    {
+      "numberOfPlayers": 4,
+      "points": 82
+    },
+    {
+      "numberOfPlayers": 2,
+      "points": 29
+    }
+  ],
+  [
+    {
+      "numberOfPlayers": 10,
+      "points": 79
+    },
+    {
+      "numberOfPlayers": 4,
+      "points": 74
+    }
+  ],
+  [
+    {
+      "numberOfPlayers": 12,
+      "points": 70
+    },
+    {
+      "numberOfPlayers": 2,
+      "points": 26
+    }
+  ],
+  [
+    {
+      "numberOfPlayers": 9,
+      "points": 57
+    },
+    {
+      "numberOfPlayers": 3,
+      "points": 12
+    }
+  ],
+  [
+    {
+      "numberOfPlayers": 12,
+      "points": 44
+    }
+  ],
+  [
+    {
+      "numberOfPlayers": 7,
+      "points": 34
+    }
+  ],
+  [
+    {
+      "numberOfPlayers": 12,
+      "points": 13
+    }
+  ]
+]
