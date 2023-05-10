@@ -8,7 +8,8 @@ class AtmServiceConfig {
 
     @Bean
     IAtmServiceOrderCalculator atmServiceOrderCalculator() {
-        return new AtmServiceOrderCalculator();
+        var tasksComparator = new TasksComparator();
+        return new AtmServiceOrderCalculator(tasksComparator);
     }
 
 }

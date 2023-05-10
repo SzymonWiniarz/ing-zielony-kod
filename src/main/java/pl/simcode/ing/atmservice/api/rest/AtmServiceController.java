@@ -10,8 +10,6 @@ import pl.simcode.ing.atmservice.IAtmServiceOrderCalculator;
 import pl.simcode.ing.atmservice.api.dto.AtmDto;
 import pl.simcode.ing.atmservice.api.dto.TaskDto;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("atms")
 @Validated
@@ -24,7 +22,7 @@ public class AtmServiceController {
     }
 
     @PostMapping("/calculateOrder")
-    public List<AtmDto> calculateOrder(@Valid @RequestBody List<TaskDto> tasks) {
+    public AtmDto[] calculateOrder(@Valid @RequestBody TaskDto[] tasks) {
         return atmServiceOrderCalculator.calculateOrder(tasks);
     }
 

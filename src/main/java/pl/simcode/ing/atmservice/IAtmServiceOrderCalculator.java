@@ -1,12 +1,10 @@
 package pl.simcode.ing.atmservice;
 
-import pl.simcode.ing.atmservice.api.dto.TaskDto;
 import pl.simcode.ing.atmservice.api.dto.AtmDto;
-
-import java.util.List;
+import pl.simcode.ing.atmservice.api.dto.TaskDto;
 
 public interface IAtmServiceOrderCalculator {
 
-    List<AtmDto> calculateOrder(List<TaskDto> tasks);
+    AtmDto[] calculateOrder(TaskDto[] tasks);
 
 }
