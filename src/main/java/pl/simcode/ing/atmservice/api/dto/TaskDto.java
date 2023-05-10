@@ -1,21 +1,26 @@
 package pl.simcode.ing.atmservice.api.dto;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
+import pl.simcode.ing.exceptions.ValidationException;
 
 public record TaskDto(
-        @NotNull
-        @Min(1)
-        @Max(9999)
         Integer region,
 
-        @NotNull
         RequestType requestType,
 
-        @NotNull
-        @Min(1)
-        @Max(9999)
         Integer atmId
 ) {
+
+    public TaskDto {
+        if (region == null || region < 1 || region > 9999) {
+            throw new ValidationException(TaskDto.class, "region", region);
+        }
+
+        if (requestType == null) {
+            throw new ValidationException(TaskDto.class, "requestType", null);
+        }
+
+        if (atmId == null || atmId < 1 || atmId > 9999) {
+            throw new ValidationException(TaskDto.class, "atmId", atmId);
+        }
+    }
 }

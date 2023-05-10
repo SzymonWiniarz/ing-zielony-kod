@@ -1,6 +1,5 @@
 package pl.simcode.ing.atmservice.api.rest;
 
-import jakarta.validation.Valid;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +21,7 @@ public class AtmServiceController {
     }
 
     @PostMapping("/calculateOrder")
-    public AtmDto[] calculateOrder(@Valid @RequestBody TaskDto[] tasks) {
+    public AtmDto[] calculateOrder(@RequestBody TaskDto[] tasks) {
         return atmServiceOrderCalculator.calculateOrder(tasks);
     }
 
