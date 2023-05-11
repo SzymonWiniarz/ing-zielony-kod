@@ -8,7 +8,8 @@ class TransactionsConfig {
 
     @Bean
     ITransactionsReportGenerator transactionsReportGenerator() {
-        return new TransactionsReportGenerator();
+        var accountsComparator = new AccountsComparator();
+        return new TransactionsReportGenerator(accountsComparator);
     }
 
 }
