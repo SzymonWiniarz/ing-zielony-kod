@@ -1,20 +1,28 @@
 package pl.simcode.ing.transactions.api.dto;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import pl.simcode.ing.exceptions.ValidationException;
 
 import java.math.BigDecimal;
 
 public record TransactionDto(
-        @NotNull
-        @Size(min = 26, max = 26)
         String debitAccount,
 
-        @NotNull
-        @Size(min = 26, max = 26)
         String creditAccount,
 
-        @NotNull
         BigDecimal amount
 ) {
+
+    public TransactionDto {
+        if (debitAccount == null || debitAccount.length() != 26) {
+            throw new ValidationException(TransactionDto.class, "debitAccount", debitAccount);
+        }
+
+        if (creditAccount == null || creditAccount.length() != 26) {
+            throw new ValidationException(TransactionDto.class, "creditAccount", creditAccount);
+        }
+
+        if (amount == null) {
+            throw new ValidationException(TransactionDto.class, "amount", null);
+        }
+    }
 }

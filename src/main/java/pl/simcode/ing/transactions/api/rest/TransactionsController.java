@@ -1,31 +1,34 @@
 package pl.simcode.ing.transactions.api.rest;
 
-import jakarta.validation.Valid;
-import org.springframework.validation.annotation.Validated;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.simcode.ing.transactions.ITransactionsReportGenerator;
+import pl.simcode.ing.transactions.ITransactionsReportGeneratorFactory;
 import pl.simcode.ing.transactions.api.dto.AccountDto;
-import pl.simcode.ing.transactions.api.dto.TransactionDto;
 
-import java.util.List;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("transactions")
-@Validated
 public class TransactionsController {
 
-    private final ITransactionsReportGenerator transactionsReportGenerator;
+    private final TransactionsJsonParser transactionsJsonParser;
+    private final ITransactionsReportGeneratorFactory transactionsReportGeneratorFactory;
 
-    public TransactionsController(ITransactionsReportGenerator transactionsReportGenerator) {
-        this.transactionsReportGenerator = transactionsReportGenerator;
+    public TransactionsController(TransactionsJsonParser transactionsJsonParser, ITransactionsReportGeneratorFactory transactionsReportGeneratorFactory) {
+        this.transactionsJsonParser = transactionsJsonParser;
+        this.transactionsReportGeneratorFactory = transactionsReportGeneratorFactory;
     }
 
     @PostMapping("/report")
-    public List<AccountDto> generateReport(@Valid @RequestBody List<TransactionDto> transactions) {
-        return transactionsReportGenerator.generateReport(transactions);
+    public AccountDto[] generateReport(HttpServletRequest request) throws IOException {
+        var transactionsReportGenerator = transactionsReportGeneratorFactory.create();
+
+        var requestInputStream = request.getInputStream();
+        transactionsJsonParser.readTransactionsFromJson(requestInputStream, transactionsReportGenerator::processTransactionsBatch);
+
+        return transactionsReportGenerator.generateReport();
     }
 
 }

@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface ITransactionsReportGenerator {
 
-    List<AccountDto> generateReport(List<TransactionDto> transactions);
+    void processTransactionsBatch(List<TransactionDto> transactionsBatch);
+
+    AccountDto[] generateReport();
 
 }
