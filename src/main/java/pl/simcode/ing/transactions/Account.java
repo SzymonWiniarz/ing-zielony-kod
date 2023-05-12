@@ -16,10 +16,6 @@ class Account {
         this.accountNumber = accountNumber;
     }
 
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
     void debit(BigDecimal amount) {
         debitCount.incrementAndGet();
         balance.accumulateAndGet(amount, BigDecimal::subtract);

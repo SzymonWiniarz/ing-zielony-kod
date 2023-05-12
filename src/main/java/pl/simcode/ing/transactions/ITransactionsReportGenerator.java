@@ -3,8 +3,12 @@ package pl.simcode.ing.transactions;
 import pl.simcode.ing.transactions.api.dto.AccountDto;
 import pl.simcode.ing.transactions.api.dto.TransactionDto;
 
+import java.util.List;
+
 public interface ITransactionsReportGenerator {
 
-    AccountDto[] generateReport(TransactionDto[] transactions);
+    void processTransactionsBatch(List<TransactionDto> transactionsBatch);
+
+    AccountDto[] generateReport();
 
 }

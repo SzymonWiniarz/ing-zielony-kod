@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Configuration;
 class TransactionsConfig {
 
     @Bean
-    ITransactionsReportGenerator transactionsReportGenerator() {
+    ITransactionsReportGeneratorFactory transactionsReportGeneratorFactory() {
         var accountsComparator = new AccountsComparator();
-        return new TransactionsReportGenerator(accountsComparator);
+        return new TransactionsReportGeneratorFactory(accountsComparator);
     }
 
 }
