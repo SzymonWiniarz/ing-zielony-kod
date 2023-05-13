@@ -1,5 +1,5 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/SzymonWiniarz/ing-zielony-kod/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/SzymonWiniarz/ing-zielony-kod/tree/master)
-![Known Vulnerabilities](https://snyk.io/test/github/SzymonWiniarz/ing-zielony-kod/badge.svg)
+[![Snyk Security](https://github.com/SzymonWiniarz/ing-zielony-kod/actions/workflows/snyk-security.yml/badge.svg)](https://github.com/SzymonWiniarz/ing-zielony-kod/actions/workflows/snyk-security.yml)
 
 # Rozwiązanie zadania konkursowego ING Zielony Kod
 autor: Szymon Winiarz
@@ -35,4 +35,6 @@ Aplikacja posiada następujące parametry konfiguracyjne zawarte w pliku applica
 Nieniejsze repozytorium zintegrowane jest z narzędziem statycznej analizy bezpieczeństwa kodu Snyk. 
 Znalezione podatności można sprawdzić na stronie repozytorium w zakładce Security -> code scanning.
 Na dzień wysłania rozwiązania, to jest 14 maja 2023 kod nie posiada żadnych wykrytych podatności, 
-co dokumentuję dodatkowo załączeniem do głównego katalogu repozytorium raportu Snyka w formacie JSON oraz zrzutu ekranu z zakładki Security w repozytorium. 
+co dokumentuję dodatkowo załączeniem do głównego katalogu repozytorium raportu Snyka w formacie JSON ([snyk-code.json](snyk-code.json)) oraz zrzutu ekranu z zakładki Security w repozytorium. 
+
+![github_security.png](github_security.png) 
