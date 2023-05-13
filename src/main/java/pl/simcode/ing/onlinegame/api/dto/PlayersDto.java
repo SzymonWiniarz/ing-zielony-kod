@@ -1,22 +1,19 @@
 package pl.simcode.ing.onlinegame.api.dto;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-
-import java.util.List;
+import pl.simcode.ing.exceptions.ValidationException;
 
 public record PlayersDto(
-        @NotNull
-        @Min(1)
-        @Max(1000)
         Integer groupCount,
-
-        @NotNull
-        @Size(min = 1, max = 20000)
-        @Valid
-        List<ClanDto> clans
+        ClanDto[] clans
 ) {
+
+    public PlayersDto {
+        if (groupCount == null || groupCount < 1 || groupCount > 1000) {
+            throw new ValidationException(PlayersDto.class, "groupCount", groupCount);
+        }
+
+        if (clans == null || clans.length == 0 || clans.length > 20000) {
+            throw new ValidationException(PlayersDto.class, "clans", clans);
+        }
+    }
 }
