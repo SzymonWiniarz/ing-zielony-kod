@@ -39,7 +39,6 @@ class WarmupHttpClient {
             long endTime = System.currentTimeMillis();
 
             currentCallDurationInMillis = endTime - startTime;
-            LOGGER.info("Warmup for {} endpoint took {} ms", endpointPath, currentCallDurationInMillis);
         } while (Math.abs(currentCallDurationInMillis - previousCallDurationInMillis) > warmupDoneThreshold);
 
         LOGGER.info("Warmup for {} endpoint finished", endpointPath);
