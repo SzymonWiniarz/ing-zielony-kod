@@ -3,10 +3,7 @@ package pl.simcode.ing.onlinegame;
 import pl.simcode.ing.onlinegame.api.dto.ClanDto;
 import pl.simcode.ing.onlinegame.api.dto.PlayersDto;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.util.Arrays;
 
 class OnlineGamePlayerOrderCalculator implements IOnlineGamePlayerOrderCalculator {
 
@@ -17,51 +14,17 @@ class OnlineGamePlayerOrderCalculator implements IOnlineGamePlayerOrderCalculato
     }
 
     @Override
-    public List<List<ClanDto>> calculateOrder(PlayersDto players) {
-        List<ClanDto> clansSortedByPoints = new ArrayList<>(players.clans());
-        clansSortedByPoints.sort(clansComparator);
+    public ClanDto[][] calculateOrder(PlayersDto players) {
+        ClanDto[] clansSortedByPoints = players.clans();
+        Arrays.parallelSort(clansSortedByPoints, clansComparator);
 
-        List<List<ClanDto>> playerGroups = new ArrayList<>();
+        var clanGroups = new ClanGroups(players.groupCount());
 
-        int currentGroupVacancies = players.groupCount();
-        List<ClanDto> currentGroup = new ArrayList<>();
-
-        while (!clansSortedByPoints.isEmpty()) {
-            var nextClanOptional = fetchNextClanWithAtMostPlayers(currentGroupVacancies, clansSortedByPoints);
-
-            if (nextClanOptional.isEmpty()) {
-                if (!currentGroup.isEmpty()) {
-                    playerGroups.add(currentGroup);
-                }
-
-                currentGroup = new ArrayList<>();
-                currentGroupVacancies = players.groupCount();
-            } else {
-                var nextClan = nextClanOptional.get();
-                currentGroup.add(nextClan);
-                currentGroupVacancies -= nextClan.numberOfPlayers();
-            }
+        for (ClanDto clan : clansSortedByPoints) {
+            clanGroups.addClanToFirstGroupWithEnoughCapacity(clan);
         }
 
-        if (!currentGroup.isEmpty()) {
-            playerGroups.add(currentGroup);
-        }
-
-        return playerGroups;
-    }
-
-    private Optional<ClanDto> fetchNextClanWithAtMostPlayers(int maxPlayerCount, List<ClanDto> clansSortedByPoints) {
-        Iterator<ClanDto> clansIterator = clansSortedByPoints.iterator();
-
-        while (clansIterator.hasNext()) {
-            ClanDto clan = clansIterator.next();
-            if (clan.numberOfPlayers() <= maxPlayerCount) {
-                clansIterator.remove();
-                return Optional.of(clan);
-            }
-        }
-
-        return Optional.empty();
+        return clanGroups.toDto();
     }
 
 }

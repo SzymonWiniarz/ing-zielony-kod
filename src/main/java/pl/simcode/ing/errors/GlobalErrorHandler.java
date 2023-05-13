@@ -1,6 +1,5 @@
 package pl.simcode.ing.errors;
 
-import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -9,11 +8,6 @@ import pl.simcode.ing.exceptions.ValidationException;
 
 @ControllerAdvice
 class GlobalErrorHandler extends ResponseEntityExceptionHandler {
-
-    @ExceptionHandler(ConstraintViolationException.class)
-    ResponseEntity<ErrorDto> handleConstraintViolationException(ConstraintViolationException e) {
-        return ResponseEntity.badRequest().body(new ErrorDto(e.getMessage()));
-    }
 
     @ExceptionHandler(ValidationException.class)
     ResponseEntity<ErrorDto> handleValidationException(ValidationException e) {

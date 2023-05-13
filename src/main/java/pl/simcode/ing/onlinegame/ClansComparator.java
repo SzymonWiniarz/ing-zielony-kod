@@ -6,18 +6,13 @@ import java.util.Comparator;
 
 class ClansComparator implements Comparator<ClanDto> {
 
-    private final Comparator<ClanDto> comparatorByPoints = Comparator.comparingInt(ClanDto::points).reversed();
-    private final Comparator<ClanDto> comparatorByPlayersCount = Comparator.comparingInt(ClanDto::numberOfPlayers);
+    private static final Comparator<ClanDto> COMPARATOR_BY_POINTS = Comparator.comparingInt(ClanDto::points).reversed();
+    private static final Comparator<ClanDto> COMPARATOR_BY_PLAYERS_COUNT = Comparator.comparingInt(ClanDto::numberOfPlayers);
+    private static final Comparator<ClanDto> COMBINED_COMPARATOR = COMPARATOR_BY_POINTS.thenComparing(COMPARATOR_BY_PLAYERS_COUNT);
 
     @Override
     public int compare(ClanDto clan1, ClanDto clan2) {
-        int comparedByPoints = comparatorByPoints.compare(clan1, clan2);
-
-        if (comparedByPoints != 0) {
-            return comparedByPoints;
-        }
-
-        return comparatorByPlayersCount.compare(clan1, clan2);
+        return COMBINED_COMPARATOR.compare(clan1, clan2);
     }
 
 }
